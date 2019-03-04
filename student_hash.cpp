@@ -23,7 +23,7 @@ struct StudentHasher
   size_t
   operator()(const StudentRecord & obj) const
   {
-    return std::hash<std::string>()(obj.name);
+    return std::hash<int>()(obj.id);
   }
 };
  
