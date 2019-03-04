@@ -51,22 +51,56 @@ int main() {
 	string currentName;
 	int currentID;
 	int currentGrade;
+	bool found;
 	while (true) 
 	{
 		cin >> IRQS;
 		if (IRQS == 'I') 
 		{
 			cin >> currentName >> currentID >> currentGrade;
-			// cout << currentName << currentID << currentGrade << endl;
-			setOfStudByName.insert(StudentRecord(currentName,currentID,currentGrade));
+			// Inserts new student record into the unordered_set
+			found = false;
+			for (StudentRecord st : setOfStudByName) 
+				{
+					if (st.id == currentID) 
+					{
+						found = true;
+						break;
+					}
+				}	
+			if (found == false)
+				setOfStudByName.insert(StudentRecord(currentName,currentID,currentGrade));
+			else 
+				cerr << "Error: Cannot insert duplicate ID" << endl;
 		}
 		else if (IRQS == 'R') 
 		{
 			cin >> currentID;
+			found = false;
+			for (StudentRecord st : setOfStudByName) 
+				{
+					if (st.id == currentID) 
+					{
+						found = true;
+						break;
+					}
+				}	
+			if (found == false)
+				cerr << "Error: Cannot remove non-existant ID" << endl;
+			else 
+
+			for (StudentRecord st : setOfStudByName) 
+			{
+				if (st.id == currentID) 
+				{
+					setOfStudByName.erase(st);
+				}
+			}	
 		}
 		else if (IRQS == 'Q') 
 		{
 			cin >> ing;
+			found = false;
 			if (ing == 'i') 
 			{
 				cin >> currentID;
@@ -74,6 +108,7 @@ int main() {
 				{
 					if (st.id == currentID) 
 					{
+						found = true;
 						st.displayInfo();
 					}
 				}	
@@ -81,10 +116,30 @@ int main() {
 			else if (ing == 'n') 
 			{
 				cin >> currentName;
+				for (StudentRecord st : setOfStudByName) 
+				{
+					if (st.name == currentName) 
+					{
+						found = true;
+						st.displayInfo();
+					}
+				}	
 			}
 			else if (ing == 'g') 
 			{
 				cin >> currentGrade;
+				for (StudentRecord st : setOfStudByName) 
+				{
+					if (st.grade == currentGrade) 
+					{
+						found = true;
+						st.displayInfo();
+					}
+				}	
+			}
+			if (found == false) 
+			{
+				cerr << "Error: No matches found" << endl;
 			}
 		}
 		else if (IRQS == 'S') 
