@@ -15,6 +15,7 @@ Running Instructions:
     1. Open terminal within this directory
     2. Type the following commands:
         make
+        sdf
 
 
 Notes and Assumptions:
