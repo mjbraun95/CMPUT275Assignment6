@@ -58,7 +58,7 @@ int main() {
 		if (IRQS == 'I') 
 		{
 			cin >> currentName >> currentID >> currentGrade;
-			// Inserts new student record into the unordered_set
+			// Inserts new student record into the unordered_set if its ID doesn't already exist
 			found = false;
 			for (StudentRecord st : setOfStudByName) 
 				{
@@ -75,6 +75,7 @@ int main() {
 		}
 		else if (IRQS == 'R') 
 		{
+			// Removes a student record from the unordered_set if it exists within it
 			cin >> currentID;
 			found = false;
 			for (StudentRecord st : setOfStudByName) 
@@ -103,6 +104,7 @@ int main() {
 			found = false;
 			if (ing == 'i') 
 			{
+				// Searches for students with the inputted id
 				cin >> currentID;
 				for (StudentRecord st : setOfStudByName) 
 				{
@@ -115,6 +117,7 @@ int main() {
 			}
 			else if (ing == 'n') 
 			{
+				// Searches for students with the inputted name
 				cin >> currentName;
 				for (StudentRecord st : setOfStudByName) 
 				{
@@ -127,6 +130,7 @@ int main() {
 			}
 			else if (ing == 'g') 
 			{
+				// Searches for students with the inputted grade
 				cin >> currentGrade;
 				for (StudentRecord st : setOfStudByName) 
 				{
@@ -139,15 +143,15 @@ int main() {
 			}
 			if (found == false) 
 			{
+				// If the search returns nothing
 				cerr << "Error: No matches found" << endl;
 			}
 		}
 		else if (IRQS == 'S') 
 		{
+			// Exits program
 			break;
 		}
 	}
-	
-	
 	return 0;
 }
