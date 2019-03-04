@@ -15,8 +15,7 @@ Running Instructions:
     1. Open terminal within this directory
     2. Type the following commands:
         make
-        ./count_components
-    3. The program will read the file "edmonton-roads-2.0.1.txt" from this directory, if it exits, and outputs how many connected components of vertices and edges are within it.
+
 
 Notes and Assumptions:
     The BFS function was found online and a link is provided within count_components.cpp
