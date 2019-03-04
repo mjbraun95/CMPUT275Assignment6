@@ -1,0 +1,22 @@
+//////////////////////////////////////////////////////////
+// CMPUT 275 Winter 2019
+// Matthew Braun, 1497171
+// Weekly Exercise 6: STL Concepts
+//////////////////////////////////////////////////////////
+
+Included Files:
+    * student_hash.cpp
+    * complex_postfix.cpp
+    * Makefile
+    * README
+    
+Running Instructions:
+    count_components.cpp:
+    1. Open terminal within this directory
+    2. Type the following commands:
+        make
+        ./count_components
+    3. The program will read the file "edmonton-roads-2.0.1.txt" from this directory, if it exits, and outputs how many connected components of vertices and edges are within it.
+
+Notes and Assumptions:
+    The BFS function was found online and a link is provided within count_components.cpp
