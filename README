@@ -15,8 +15,10 @@ Running Instructions:
     1. Open terminal within this directory
     2. Type the following commands:
         make
-        sdf
+        ./student       (to run the student_hash.cpp code)
+        ./calc          (to run the complex_postfix.cpp code)
 
 
 Notes and Assumptions:
-    The BFS function was found online and a link is provided within count_components.cpp
+    The custom hash and comparison functions were found and modified online from:
+        https://thispointer.com/how-to-use-unordered_set-with-user-defined-classes-tutorial-example/

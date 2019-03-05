@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////////////
+// CMPUT 275 Winter 2019
+// Matthew Braun, 1497171
+// Weekly Exercise 6: STL Concepts
+//////////////////////////////////////////////////////////
+
 #include <iostream>
 #include <unordered_set>
 
@@ -6,16 +12,19 @@ using namespace std;
 struct StudentRecord {
 	string name;
 	int id, grade;
+	// Method to declare a StudentRecord struct with pre-defined values
 	StudentRecord(string currentName, int currentID, int currentGrade) :
       name(currentName), id(currentID), grade(currentGrade)
   	{
   	}
+  	// Method to display a StudentRecord object
 	void displayInfo()
   	{
     	cout << "Name: " << name << ", ID: " << id << ", Grade: " << grade << endl;
   	}
 };
 
+// Found and modified from https://thispointer.com/how-to-use-unordered_set-with-user-defined-classes-tutorial-example/
 // Custom Hash Functor that will compute the hash on the
 // passed string objects length
 struct StudentHasher
@@ -26,7 +35,8 @@ struct StudentHasher
     return std::hash<int>()(obj.id);
   }
 };
- 
+
+// Found and modified from https://thispointer.com/how-to-use-unordered_set-with-user-defined-classes-tutorial-example/
 // Custom comparator that compares the string objects by length
 struct StudentComparator
 {
@@ -44,8 +54,12 @@ int main() {
 	// this doesn't work!
 	// unordered_set <StudentRecord> table;
 	// unordered_set <StudentRecord> setOfStudentRecords;
-	unordered_set <StudentRecord, StudentHasher, StudentComparator> setOfStudByName;
 	// do something different
+
+	// Declare an unordered_set with a custom hash function and a custom comparison function, 
+	// since we are hashing a user-defined data structure
+	unordered_set <StudentRecord, StudentHasher, StudentComparator> setOfStudByName;
+
 	char IRQS;
 	char ing;
 	string currentName;
@@ -71,6 +85,7 @@ int main() {
 			if (found == false)
 				setOfStudByName.insert(StudentRecord(currentName,currentID,currentGrade));
 			else 
+				// Checks for duplicate ID insertion
 				cerr << "Error: Cannot insert duplicate ID" << endl;
 		}
 		else if (IRQS == 'R') 
@@ -87,16 +102,18 @@ int main() {
 					}
 				}	
 			if (found == false)
+				// Checks for non-existant ID deletion
 				cerr << "Error: Cannot remove non-existant ID" << endl;
 			else 
-
-			for (StudentRecord st : setOfStudByName) 
 			{
-				if (st.id == currentID) 
+				for (StudentRecord st : setOfStudByName) 
 				{
-					setOfStudByName.erase(st);
-				}
-			}	
+					if (st.id == currentID) 
+					{
+						setOfStudByName.erase(st);
+					}
+				}	
+			}
 		}
 		else if (IRQS == 'Q') 
 		{

@@ -1,5 +1,5 @@
 CC=g++
-FLAGS=-std=c++11
+FLAGS= -std=c++11 -c -Wall -O2
 
 all: student_hash.o complex_postfix.o
 	$(CC) student_hash.o -o student

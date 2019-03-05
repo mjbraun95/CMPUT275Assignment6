@@ -5,6 +5,7 @@ using namespace std; // can now refer to std :: pair as pair
 
 int main()
 {
+    // Declating variables
     char VBUS;
     long long r1;
     long long r2;
@@ -21,19 +22,17 @@ int main()
         cin >> VBUS;
         if (VBUS == 'V')
         {
-
+            // Pushes new complex value to the stack
             cin >> r1 >> r2;
-
             pair<long long,long long> currentPair(r1,r2);
-            
             s.push(currentPair);
         }
         else if (VBUS == 'B')
         {
-
             cin >> op;
             if (op == '+')
             {
+                // Erases last 2 operators and calculates the complex sum of the new one to add to the stack
                 real1 = s.top().first;
                 imaginary1 = s.top().second;
                 s.pop();
@@ -47,6 +46,7 @@ int main()
             }
             else if (op == '*')
             {
+                // Erases last 2 operators and calculates the complex product of the new one to add to the stack
                 real1 = s.top().first;
                 imaginary1 = s.top().second;
                 s.pop();
@@ -60,6 +60,8 @@ int main()
             }
             else if (op == '-')
             {
+                // Subtracts the last complex value from the second-last complex value, 
+                // erases the previous values, and pushes the new values
                 real1 = s.top().first;
                 imaginary1 = s.top().second;
                 s.pop();
@@ -77,16 +79,19 @@ int main()
             cin >> op;
             if (op == '-')
             {
+                // Negates the last input complex value
                 s.top().first = s.top().first*-1;
                 s.top().second = s.top().second*-1;
             }
             else if (op == 'c')
             {
+                // Conjugates the last input complex value
                 s.top().second = s.top().second*-1;
             }
         }
         else if (VBUS == 'S')
         {
+            // Outputs the final complex value after all operations
             cout << s.top().first << " " << s.top().second << " " << endl;
             break;
         }
